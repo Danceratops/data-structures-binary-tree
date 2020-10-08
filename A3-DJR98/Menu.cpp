@@ -21,7 +21,7 @@ void getOperation(int& operationChoice) {
 			std::cout << "Please enter a numerical value between 1 and 7." << std::endl;
 			validInput = true;
 		}
-		else 
+		else
 		{
 			validInput = false;
 		}
@@ -74,30 +74,64 @@ void callToTree(int operationChoice, TreeNode* givenNode) {
 
 void callToInsert(TreeNode* givenNode) {
 	int tempData;
-	std::cout << "Enter data to be stored: ";
-	std::cin >> tempData;
+	bool validInput = true;
+	do {
+		std::cout << "Enter data to be stored: ";
+		std::cin >> tempData;
+		if (std::cin.fail()) {
+			validInput = false;
+		}
+		else
+		{
+			insert(givenNode, tempData);
+			validInput = true;
+		}
+	} while (!validInput);
 
-	insert(givenNode, tempData);
 }
 
 void callToSearch(TreeNode* givenNode) {
 	int tempData;
-	std::cout << "Enter data to find: ";
-	std::cin >> tempData;
+	bool validInput = true;
+	do {
+		std::cout << "Enter data to find: ";
+		std::cin >> tempData;
 
-	TreeNode* tempNode = search(givenNode, tempData);
-	if (tempNode->treeData == NULL) {
-		std::cout << "Data not found." << std::endl;
-	}
-	else {
-		std::cout << "Node exists." << std::endl;
-	}
+		if (std::cin.fail())
+		{
+			validInput = false;
+		}
+		else
+		{
+			TreeNode* tempNode = search(givenNode, tempData);
+
+			if (tempNode->treeData == NULL) {
+				std::cout << "Data not found." << std::endl;
+			}
+			else {
+				std::cout << "Node exists." << std::endl;
+			}
+
+			validInput = true;
+		}
+	} while (!validInput);
 }
 
 void callToDelete(TreeNode* givenNode) {
 	int tempData;
-	std::cout << "Enter data to be deleted: ";
-	std::cin >> tempData;
+	bool validInput = true;
+	do {
+		std::cout << "Enter data to be deleted: ";
+		std::cin >> tempData;
 
-	deleteNode(givenNode, tempData);
+		if (std::cin.fail())
+		{
+			validInput = false;
+		}
+		else
+		{
+			deleteNode(givenNode, tempData);
+			validInput = true;
+		}
+	} while (!validInput);
 }
