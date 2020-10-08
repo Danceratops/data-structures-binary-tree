@@ -133,17 +133,15 @@ void printTreeInOrder(TreeNode* givenNode)
 
 int maxSumPath(TreeNode* givenNode)
 {
-	// base case 
 	if (givenNode == NULL)
 		return 0;
 
 	TreeNode* targetNode;
 	int maxSum = INT_MIN;
 
-	// find the target leaf and maximum sum 
 	getTargetLeaf(givenNode, &maxSum, 0, &targetNode);
 
-	return maxSum; // return maximum sum 
+	return maxSum;
 }
 
 void getTargetLeaf(TreeNode* givenNode, int* maxSum, int currentSum, TreeNode** targetNode)
@@ -151,12 +149,8 @@ void getTargetLeaf(TreeNode* givenNode, int* maxSum, int currentSum, TreeNode** 
 	if (givenNode == NULL)
 		return;
 
-	// Update current sum to hold sum of nodes on path 
-	// from root to this node 
 	currentSum = currentSum + givenNode->treeData;
 
-	// If this is a leaf node and path to this node has 
-	// maximum sum so far, then make this node target_leaf 
 	if (givenNode->left == NULL && givenNode->right == NULL) {
 		if (currentSum > * maxSum) {
 			*maxSum = currentSum;
@@ -164,8 +158,6 @@ void getTargetLeaf(TreeNode* givenNode, int* maxSum, int currentSum, TreeNode** 
 		}
 	}
 
-	// If this is not a leaf node, then recur down 
-	// to find the target_leaf 
 	getTargetLeaf(givenNode->left, maxSum, currentSum,
 		targetNode);
 	getTargetLeaf(givenNode->right, maxSum, currentSum,
