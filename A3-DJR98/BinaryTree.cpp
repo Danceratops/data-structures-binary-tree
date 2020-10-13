@@ -5,45 +5,53 @@
 
 TreeNode* newNode(int givenData)
 {
-	TreeNode* temp = (TreeNode*)malloc(sizeof(TreeNode));
-	temp->treeData = givenData;
-	temp->left = temp->right = NULL;
-	return temp;
+	TreeNode* node = new TreeNode;
+	node->treeData = givenData;
+	node->left = NULL;
+	node->right = NULL;
+
+	return(node);
 }
 
-TreeNode* search(TreeNode* currentNode, int nodeData)
+bool search(TreeNode* currentNode, int nodeData)
 {
-	if (currentNode == nullptr || currentNode->treeData == nodeData)
-	{
-		return currentNode;
+	if (currentNode == nullptr) {
+		return false;
 	}
 
-	if (currentNode->treeData < nodeData)
-	{
-		return search(currentNode->right, nodeData);
+	if (currentNode->treeData == nodeData) {
+		return true;
 	}
 
-	return search(currentNode->left, nodeData);
+	bool recurSearch = search(currentNode->left, nodeData);
+
+	if (recurSearch) {
+		return true;
+	}
+
+	recurSearch = search(currentNode->right, nodeData);
+
+	return recurSearch;
+
 }
 
-TreeNode* insert(TreeNode* nodeToInsert, int dataToInset)
+TreeNode* insert(TreeNode*& root, int dataToInsert)
 {
-	if (nodeToInsert == NULL)
-	{
-		return newNode(dataToInset);
+	if (root == nullptr) {
+		std::cout << dataToInsert << " has been inserted successfully." << std::endl;
+		return newNode(dataToInsert);
+	}
+	else {
+		if (dataToInsert <= root->treeData)
+		{
+			root->left = insert(root->left, dataToInsert);
+		}
+		else {
+			root->right = insert(root->right, dataToInsert);
+		}
 	}
 
-	if (dataToInset < nodeToInsert->treeData)
-	{
-		nodeToInsert->left = insert(nodeToInsert->left, dataToInset);
-	}
-
-	else if (dataToInset > nodeToInsert->treeData)
-	{
-		nodeToInsert->right = insert(nodeToInsert->right, dataToInset);
-	}
-
-	return nodeToInsert;
+	return root;
 }
 
 TreeNode* minValueNode(TreeNode* givenNode)
@@ -82,12 +90,14 @@ TreeNode* deleteNode(TreeNode* givenNode, int givenData)
 		{
 			TreeNode* temp = givenNode->right;
 			free(givenNode);
+			std::cout << "Node deleted" << std::endl;
 			return temp;
 		}
 		else if (givenNode->right == NULL)
 		{
 			TreeNode* temp = givenNode->left;
 			free(givenNode);
+			std::cout << "Node deleted" << std::endl;
 			return temp;
 		}
 
@@ -127,21 +137,21 @@ void printTreeInOrder(TreeNode* givenNode)
 	}
 
 	printTreeInOrder(givenNode->left);
-	std::cout << givenNode->treeData << " ";
+	std::cout << givenNode->treeData << " \n";
 	printTreeInOrder(givenNode->right);
 }
 
-int maxSumPath(TreeNode* givenNode)
+void maxSumPath(TreeNode* givenNode)
 {
 	if (givenNode == NULL)
-		return 0;
+		return;
 
 	TreeNode* targetNode;
 	int maxSum = INT_MIN;
 
 	getTargetLeaf(givenNode, &maxSum, 0, &targetNode);
 
-	return maxSum;
+	std::cout << "Most expensive path is " << maxSum << std::endl;
 }
 
 void getTargetLeaf(TreeNode* givenNode, int* maxSum, int currentSum, TreeNode** targetNode)
