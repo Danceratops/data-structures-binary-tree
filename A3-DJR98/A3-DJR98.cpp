@@ -15,49 +15,7 @@ int main()
     do {
         displayOperations();
         getOperation(choice);
-
-		switch (choice)
-		{
-		case 1:
-		{
-			callToInsert(startNode);
-		}
-		break;
-		case 2:
-		{
-			callToSearch(startNode);
-		}
-		break;
-		case 3:
-		{
-			callToDelete(startNode);
-		}
-		break;
-		case 4:
-		{
-			printTreeInOrder(startNode);
-			std::cout << "\n";
-		}
-		break;
-		case 5:
-		{
-			maxSumPath(startNode);
-		}
-		break;
-		case 6:
-		{
-			printTree(startNode, 0);
-		}
-		break;
-		case 7:
-		{
-			std::cout << "Now exiting program..." << std::endl;
-			exit(0);
-		}
-		break;
-		default:
-			break;
-		}
+        operatorController(choice, startNode);
     } while (isContinue);
 
 	return 0;

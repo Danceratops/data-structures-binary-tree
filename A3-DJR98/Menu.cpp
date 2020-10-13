@@ -97,3 +97,48 @@ void callToDelete(TreeNode*& startNode) {
 		}
 	} while (!validInput);
 }
+
+void operatorController(int& choice, TreeNode*& startNode) {
+	switch (choice)
+	{
+	case 1:
+	{
+		callToInsert(startNode);
+	}
+	break;
+	case 2:
+	{
+		callToSearch(startNode);
+	}
+	break;
+	case 3:
+	{
+		callToDelete(startNode);
+	}
+	break;
+	case 4:
+	{
+		printTreeInOrder(startNode);
+		std::cout << "\n";
+	}
+	break;
+	case 5:
+	{
+		maxSumPath(startNode);
+	}
+	break;
+	case 6:
+	{
+		printTree(startNode, 0);
+	}
+	break;
+	case 7:
+	{
+		std::cout << "Now exiting program..." << std::endl;
+		exit(0);
+	}
+	break;
+	default:
+		break;
+	}
+}
