@@ -48,3 +48,31 @@ void callToInsert(TreeNode*& startNode) {
 		}
 	} while (!validInput);
 }
+
+void callToSearch(TreeNode*& startNode) {
+	int tempData;
+	bool validInput = true;
+
+	do {
+		std::cout << "Enter data to find: ";
+		std::cin >> tempData;
+
+		if (std::cin.fail())
+		{
+			validInput = false;
+		}
+		else
+		{
+			bool doesExist = search(startNode, tempData);
+
+			if (doesExist) {
+				std::cout << "Node exists in tree." << std::endl;
+			}
+			else {
+				std::cout << "Node does not exist in tree." << std::endl;
+			}
+
+			validInput = true;
+		}
+	} while (!validInput);
+}
