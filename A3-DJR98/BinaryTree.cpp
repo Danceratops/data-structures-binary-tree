@@ -113,19 +113,19 @@ TreeNode* deleteNode(TreeNode* givenNode, int givenData)
 
 void printTree(TreeNode* givenNode, int indent)
 {
-	if (indent)
-	{
-		std::cout << std::setw(indent) << ' ';
-	}
-
-	std::cout << givenNode->treeData << '\n';
-	if (givenNode->left)
-	{
-		printTree(givenNode->left, indent);
-	}
-	if (givenNode->right)
-	{
-		printTree(givenNode->right, indent);
+	if (givenNode != NULL) {
+		if (givenNode->right) {
+			printTree(givenNode->right, indent + 4);
+		}
+		if (indent) {
+			std::cout << std::setw(indent) << ' ';
+		}
+		if (givenNode->right) std::cout << " /\n" << std::setw(indent) << ' ';
+		std::cout << givenNode->treeData << "\n ";
+		if (givenNode->left) {
+			std::cout << std::setw(indent) << ' ' << " \\\n";
+			printTree(givenNode->left, indent + 4);
+		}
 	}
 }
 

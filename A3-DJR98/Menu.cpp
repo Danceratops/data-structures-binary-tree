@@ -6,7 +6,7 @@ void displayOperations() {
 	std::cout << "1. Insert" << std::endl;
 	std::cout << "2. Search" << std::endl;
 	std::cout << "3. Delete" << std::endl;
-	std::cout << "4. Print Sorted Order" << std::endl;
+	std::cout << "4. Print From Highest to Lowest" << std::endl;
 	std::cout << "5. Most Expensive Path" << std::endl;
 	std::cout << "6. Print In Tree Format" << std::endl;
 	std::cout << "7. Exit" << std::endl;
