@@ -90,6 +90,7 @@ int main()
 		case 4:
 		{
 			printTreeInOrder(startNode);
+			std::cout << "\n";
 		}
 		break;
 		case 5:

@@ -137,7 +137,7 @@ void printTreeInOrder(TreeNode* givenNode)
 	}
 
 	printTreeInOrder(givenNode->left);
-	std::cout << givenNode->treeData << " \n";
+	std::cout << givenNode->treeData << " ";
 	printTreeInOrder(givenNode->right);
 }
 

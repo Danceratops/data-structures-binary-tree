@@ -15,6 +15,7 @@ void displayOperations() {
 void getOperation(int& operationChoice) {
 	bool validInput = true;
 	do {
+		std::cout << "Enter an option from the menu: ";
 		std::cin >> operationChoice;
 		if (std::cin.fail() || operationChoice > 7 || operationChoice < 1)
 		{
