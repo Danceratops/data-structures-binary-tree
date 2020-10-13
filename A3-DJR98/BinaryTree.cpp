@@ -58,7 +58,6 @@ TreeNode* minValueNode(TreeNode* givenNode)
 {
 	TreeNode* currentNode = givenNode;
 
-	/* loop down to find the leftmost leaf */
 	while (currentNode && currentNode->left != NULL)
 	{
 		currentNode = currentNode->left;
@@ -120,8 +119,12 @@ void printTree(TreeNode* givenNode, int indent)
 		if (indent) {
 			std::cout << std::setw(indent) << ' ';
 		}
-		if (givenNode->right) std::cout << " /\n" << std::setw(indent) << ' ';
+		if (givenNode->right) {
+			std::cout << " /\n" << std::setw(indent) << ' ';
+		}
+
 		std::cout << givenNode->treeData << "\n ";
+
 		if (givenNode->left) {
 			std::cout << std::setw(indent) << ' ' << " \\\n";
 			printTree(givenNode->left, indent + 4);
@@ -137,7 +140,9 @@ void printTreeInOrder(TreeNode* givenNode)
 	}
 
 	printTreeInOrder(givenNode->left);
+
 	std::cout << givenNode->treeData << " ";
+
 	printTreeInOrder(givenNode->right);
 }
 

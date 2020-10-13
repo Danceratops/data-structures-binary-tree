@@ -4,3 +4,5 @@
 void displayOperations();
 
 void getOperation(int&);
+
+void callToInsert(TreeNode*&);

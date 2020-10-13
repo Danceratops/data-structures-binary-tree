@@ -28,3 +28,23 @@ void getOperation(int& operationChoice) {
 		}
 	} while (validInput);
 }
+
+void callToInsert(TreeNode*& startNode) {
+	int tempData;
+	bool validInput = true;
+
+	do {
+		std::cout << "Enter data to be stored: ";
+		std::cin >> tempData;
+
+		if (std::cin.fail()) {
+			validInput = false;
+		}
+		else
+		{
+			startNode = insert(startNode, tempData);
+
+			validInput = true;
+		}
+	} while (!validInput);
+}
