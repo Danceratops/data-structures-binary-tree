@@ -76,3 +76,24 @@ void callToSearch(TreeNode*& startNode) {
 		}
 	} while (!validInput);
 }
+
+void callToDelete(TreeNode*& startNode) {
+	int tempData;
+	bool validInput = true;
+
+	do {
+		std::cout << "Enter data to be deleted: ";
+		std::cin >> tempData;
+
+		if (std::cin.fail())
+		{
+			validInput = false;
+		}
+		else
+		{
+			deleteNode(startNode, tempData);
+
+			validInput = true;
+		}
+	} while (!validInput);
+}

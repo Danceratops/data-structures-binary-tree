@@ -8,3 +8,5 @@ void getOperation(int&);
 void callToInsert(TreeNode*&);
 
 void callToSearch(TreeNode*&);
+
+void callToDelete(TreeNode*&);

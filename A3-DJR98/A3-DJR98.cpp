@@ -30,23 +30,7 @@ int main()
 		break;
 		case 3:
 		{
-			bool validInput = true;
-
-			do {
-				std::cout << "Enter data to be deleted: ";
-				std::cin >> tempData;
-
-				if (std::cin.fail())
-				{
-					validInput = false;
-				}
-				else
-				{
-					deleteNode(startNode, tempData);
-
-					validInput = true;
-				}
-			} while (!validInput);
+			callToDelete(startNode);
 		}
 		break;
 		case 4:
